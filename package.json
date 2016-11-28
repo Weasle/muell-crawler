@@ -1,0 +1,22 @@
+{
+  "name": "muell-crawler",
+  "version": "1.0.0",
+  "description": "Crawls Norderstedt Müll calendar",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Weasle/muell-crawler.git"
+  },
+  "author": "Florian Sonnenburg",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Weasle/muell-crawler/issues"
+  },
+  "homepage": "https://github.com/Weasle/muell-crawler#readme",
+  "devDependencies": {
+    "request": "^2.75.0"
+  }
+}
