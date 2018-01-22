@@ -5,7 +5,7 @@ var fs = require('fs');
 var ical = require('ical-generator');
 var foreach = require('lodash.foreach');
 
-var year = 2017;
+var year = 2018;
 var url = 'https://www.norderstedt.de/output/abfall_export.php?call=suche&print=1&ort=1087.1&strasse=1917.59.1&abfart%5B0%5D=1917.4&abfart%5B1%5D=1.4&abfart%5B2%5D=1.2&abfart%5B3%5D=1917.1&abfart%5B4%5D=1917.2&abfart%5B5%5D=1917.3&vtyp=1&vMo=01&vJ='+year+'&bMo=12';
 var icalFile = './export/calendar.ics';
 var categories = {
@@ -63,7 +63,7 @@ var parseData = function (data) {
         var catDates = [];
         foreach(catDatesStrings, function (dateString) {
             var split = dateString.split('.');
-            var date = new Date('20' + split[2], parseInt(split[1])-1, parseInt(split[0]), 8);
+            var date = new Date('20' + split[2], parseInt(split[1])-1, parseInt(split[0]), 8, 0, 0);
             catDates.push(date);
         });
         dates[categoryId] = {
@@ -80,7 +80,7 @@ var getEvents = function (calendarDates) {
         foreach(catDates.dates, function (date) {
             // console.log(alarmDate.toDate());
             var alarms = [
-                {type: 'audio', trigger: (60*60*3)}
+                {type: 'audio', trigger: (60*60*11)}
             ];
             // Strauchwerk needs more alarms
             if (id === '1917.2') {
@@ -89,7 +89,7 @@ var getEvents = function (calendarDates) {
             }
             events.push({
                 start: date,
-                allDay: true,
+                end: new Date(date.getTime() + 3600000),
                 summary: catDates.label,
                 alarms: alarms
             });
